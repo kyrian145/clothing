@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ÉLARA — Women's Fashion · Modern & Classic</title>
+<meta name="description" content="ÉLARA is a women's clothing boutique: timeless dresses, tailoring, sets and everyday essentials. Order easily on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1c1917; --muted:#6f6760; --cream:#f7f2ec; --sand:#ece3d8; --white:#fffdfa;
+  --accent:#9a6b4f; --accent-dark:#7a5039; --gold:#b8935a; --line:#e3d9cc;
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Jost',system-ui,sans-serif;
+  --shadow:0 18px 40px -18px rgba(40,25,15,.28);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--white);line-height:1.65;font-weight:400;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+.container{width:min(1200px,92%);margin:0 auto}
+.eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:.9rem;display:block}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.1}
+h2{font-size:clamp(2rem,4.2vw,3.2rem);margin-bottom:1rem}
+.btn{display:inline-block;padding:.95rem 2.1rem;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;transition:.3s;border:1px solid var(--ink)}
+.btn-dark{background:var(--ink);color:var(--white)}
+.btn-dark:hover{background:var(--accent);border-color:var(--accent)}
+.btn-light{background:var(--white);color:var(--ink);border-color:var(--white)}
+.btn-light:hover{background:transparent;color:var(--white)}
+.btn-ghost{border-color:rgba(255,255,255,.7);color:#fff}
+.btn-ghost:hover{background:#fff;color:var(--ink)}
+.link{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid currentColor;padding-bottom:3px}
+
+/* Announcement */
+.topbar{background:var(--ink);color:#e9dfd2;text-align:center;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;padding:.55rem 1rem}
+
+/* Header */
+header{position:sticky;top:0;z-index:50;background:rgba(255,253,250,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+.logo{font-family:var(--serif);font-size:1.9rem;letter-spacing:.14em;font-weight:600}
+.logo span{color:var(--accent)}
+.nav ul{display:flex;gap:2.4rem;list-style:none}
+.nav ul a{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;position:relative;padding:.3rem 0}
+.nav ul a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--accent);transition:.3s}
+.nav ul a:hover::after{width:100%}
+.nav-actions{display:flex;align-items:center;gap:1.2rem}
+.cart-btn{position:relative;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:.5rem}
+.cart-btn svg{width:22px;height:22px}
+.cart-count{background:var(--accent);color:#fff;font-size:.68rem;min-width:19px;height:19px;border-radius:50%;display:grid;place-items:center;letter-spacing:0}
+.burger{display:none;width:28px;height:20px;position:relative}
+.burger span{position:absolute;left:0;width:100%;height:1.5px;background:var(--ink);transition:.3s}
+.burger span:nth-child(1){top:0}.burger span:nth-child(2){top:9px}.burger span:nth-child(3){top:18px}
+.burger.open span:nth-child(1){top:9px;transform:rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){top:9px;transform:rotate(-45deg)}
+
+/* Hero */
+.hero{position:relative;min-height:88vh;display:flex;align-items:center;color:#fff;background:#3a2b22 center/cover no-repeat;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,12,8,.78) 0%,rgba(20,12,8,.35) 55%,rgba(20,12,8,.1) 100%)}
+.hero .container{position:relative;z-index:2}
+.hero .eyebrow{color:#e5c9a8}
+.hero h1{font-size:clamp(2.8rem,7vw,5.6rem);max-width:760px;margin-bottom:1.4rem}
+.hero h1 em{font-style:italic;color:#e8cba8}
+.hero p{max-width:480px;font-size:1.05rem;color:#eadfd2;margin-bottom:2.2rem;font-weight:300}
+.hero-cta{display:flex;gap:1.6rem;align-items:center;flex-wrap:wrap}
+.scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:#e9dfd2;display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.scroll::after{content:"";width:1px;height:44px;background:linear-gradient(#e9dfd2,transparent);animation:drip 2s infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* Feature strip */
+.strip{background:var(--cream);border-bottom:1px solid var(--line)}
+.strip .container{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding:1.6rem 0}
+.strip div{text-align:center;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:.7rem}
+.strip div b{color:var(--gold);font-size:1rem}
+
+/* Sections */
+section{padding:6rem 0}
+.sec-head{text-align:center;max-width:620px;margin:0 auto 3rem}
+.sec-head p{color:var(--muted)}
+
+/* Shop toolbar */
+.toolbar{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;margin-bottom:2.2rem;padding-bottom:1.4rem;border-bottom:1px solid var(--line)}
+.filters{display:flex;gap:.5rem;flex-wrap:wrap}
+.chip{padding:.5rem 1.2rem;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);transition:.25s;border-radius:40px}
+.chip:hover{border-color:var(--ink)}
+.chip.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tools{display:flex;gap:.8rem;flex-wrap:wrap}
+.tools input,.tools select{font-family:var(--sans);font-size:.85rem;padding:.65rem 1rem;border:1px solid var(--line);background:var(--white);color:var(--ink);outline:none;min-width:190px}
+.tools input:focus,.tools select:focus{border-color:var(--accent)}
+
+/* Grid */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem 1.5rem}
+.card{position:relative}
+.card .img{position:relative;aspect-ratio:3/4;overflow:hidden;background:linear-gradient(135deg,var(--sand),#d9c8b5)}
+.card .img img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.card:hover .img img{transform:scale(1.07)}
+.tag{position:absolute;top:12px;left:12px;background:var(--white);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;padding:.3rem .7rem;z-index:2}
+.add{position:absolute;left:12px;right:12px;bottom:12px;background:var(--ink);color:#fff;padding:.85rem;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;opacity:0;transform:translateY(10px);transition:.3s;z-index:2}
+.card:hover .add{opacity:1;transform:none}
+.add:hover{background:var(--accent)}
+.card h3{font-size:1.35rem;margin-top:1rem;font-weight:500}
+.card .cat{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.price{margin-top:.2rem;font-weight:500;color:var(--accent-dark)}
+.price s{color:var(--muted);font-weight:300;margin-left:.5rem;font-size:.9rem}
+.empty{text-align:center;padding:4rem 0;display:none}
+.empty p{margin-bottom:1.4rem;color:var(--muted)}
+.size-row{display:flex;gap:.35rem;margin-top:.5rem}
+.size-row button{font-size:.68rem;width:30px;height:26px;border:1px solid var(--line);transition:.2s}
+.size-row button.on,.size-row button:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* Collections */
+.collections{background:var(--cream)}
+.col-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:300px 300px;gap:1.2rem}
+.col{position:relative;overflow:hidden;background:#3a2b22 center/cover;color:#fff;display:flex;align-items:flex-end;padding:1.6rem}
+.col:first-child{grid-row:span 2}
+.col::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(15,8,4,.7),transparent 60%);transition:.4s}
+.col::after{content:"";position:absolute;inset:0;background:inherit;transition:transform .9s;z-index:-1}
+.col:hover::after{transform:scale(1.06)}
+.col{isolation:isolate}
+.col div{position:relative;z-index:2}
+.col h3{font-size:1.9rem}
+.col span{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#e5c9a8}
+
+/* Why */
+.why-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.why-img{aspect-ratio:4/5;background:#cdb9a3 center/cover;position:relative}
+.why-img::after{content:"";position:absolute;inset:18px -18px -18px 18px;border:1px solid var(--gold);z-index:-1}
+.why-list{display:grid;gap:1.8rem;margin-top:2rem}
+.why-item{display:flex;gap:1.2rem}
+.why-item .n{font-family:var(--serif);font-size:2rem;color:var(--gold);line-height:1;min-width:40px}
+.why-item h3{font-size:1.4rem;margin-bottom:.2rem}
+.why-item p{color:var(--muted);font-size:.95rem}
+
+/* Stat band */
+.band{background:var(--ink);color:#fff;padding:4.5rem 0;text-align:center}
+.band .big{font-family:var(--serif);font-size:clamp(3.4rem,8vw,6rem);color:#e5c9a8;line-height:1}
+.band p{letter-spacing:.3em;text-transform:uppercase;font-size:.8rem;color:#cdbfae;margin-top:.8rem}
+
+/* About */
+.about-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:center}
+.about-wrap p{color:var(--muted);margin-bottom:1.1rem}
+.stats{display:flex;gap:3rem;margin:2rem 0 2.4rem;flex-wrap:wrap}
+.stats b{font-family:var(--serif);font-size:2.6rem;display:block;color:var(--accent-dark);font-weight:500;line-height:1}
+.stats span{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.about-img{aspect-ratio:1/1;background:#cdb9a3 center/cover}
+
+/* Testimonials */
+.reviews{background:var(--cream)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.rev{background:var(--white);padding:2.2rem;border:1px solid var(--line)}
+.stars{color:var(--gold);letter-spacing:.2em;margin-bottom:1rem}
+.rev p{font-family:var(--serif);font-size:1.25rem;line-height:1.45;margin-bottom:1.4rem}
+.rev strong{display:block;font-weight:500}
+.rev small{color:var(--muted);letter-spacing:.12em;text-transform:uppercase;font-size:.68rem}
+.note{text-align:center;color:var(--muted);font-size:.75rem;margin-top:1.4rem}
+
+/* CTA */
+.cta{position:relative;color:#fff;text-align:center;background:#3a2b22 center/cover fixed;padding:8rem 0}
+.cta::before{content:"";position:absolute;inset:0;background:rgba(20,12,8,.62)}
+.cta .container{position:relative}
+.cta h2{font-size:clamp(2.2rem,5vw,4rem);max-width:780px;margin:0 auto 2rem}
+.cta .row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* Newsletter */
+.news{text-align:center;padding:5rem 0}
+.news form{display:flex;max-width:480px;margin:1.6rem auto 0;border:1px solid var(--ink)}
+.news input{flex:1;border:none;padding:1rem 1.2rem;font-family:var(--sans);outline:none;background:transparent}
+.news button{background:var(--ink);color:#fff;padding:0 1.8rem;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;transition:.3s}
+.news button:hover{background:var(--accent)}
+.msg{margin-top:1rem;color:var(--accent-dark);font-size:.9rem;min-height:1.4em}
+
+/* Footer */
+footer{background:#161210;color:#bfb3a5;padding:4.5rem 0 1.6rem}
+.foot{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid #2c2520}
+footer .logo{color:#fff;display:block;margin-bottom:1rem}
+footer h4{font-family:var(--sans);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:#fff;margin-bottom:1.1rem;font-weight:500}
+footer ul{list-style:none;display:grid;gap:.6rem;font-size:.92rem}
+footer a:hover{color:#e5c9a8}
+.copy{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding-top:1.6rem;font-size:.82rem}
+
+/* Cart drawer */
+.overlay{position:fixed;inset:0;background:rgba(20,12,8,.5);opacity:0;pointer-events:none;transition:.35s;z-index:90}
+.overlay.show{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(430px,100%);background:var(--white);z-index:100;transform:translateX(100%);transition:transform .45s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.d-head{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 1.6rem;border-bottom:1px solid var(--line)}
+.d-head h3{font-size:1.7rem}
+.close{font-size:1.8rem;line-height:1}
+.d-body{flex:1;overflow:auto;padding:1rem 1.6rem}
+.d-empty{text-align:center;color:var(--muted);padding:3rem 0}
+.item{display:grid;grid-template-columns:72px 1fr auto;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);align-items:center}
+.item img{width:72px;height:92px;object-fit:cover;background:var(--sand)}
+.item h4{font-family:var(--serif);font-size:1.15rem;font-weight:500;line-height:1.2}
+.item small{color:var(--muted);font-size:.75rem;letter-spacing:.08em}
+.qty{display:flex;align-items:center;gap:.7rem;margin-top:.4rem}
+.qty button{width:26px;height:26px;border:1px solid var(--line)}
+.qty button:hover{border-color:var(--ink)}
+.rm{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:underline}
+.d-foot{padding:1.4rem 1.6rem;border-top:1px solid var(--line);background:var(--cream)}
+.row2{display:flex;justify-content:space-between;margin-bottom:.4rem;font-size:.95rem}
+.row2.total{font-size:1.2rem;font-weight:500;margin-top:.5rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.d-foot small{display:block;color:var(--muted);margin:.8rem 0 1rem;font-size:.78rem}
+.wa{width:100%;background:#1f9d55;color:#fff;padding:1rem;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;transition:.3s}
+.wa:hover{background:#17804a}
+.clear{display:block;margin:.9rem auto 0;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:underline;color:var(--muted)}
+
+/* Toast */
+.toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,30px);background:var(--ink);color:#fff;padding:.8rem 1.6rem;font-size:.85rem;opacity:0;transition:.35s;z-index:120;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* Responsive */
+@media(max-width:1020px){
+  .grid{grid-template-columns:repeat(3,1fr)}
+  .why-wrap,.about-wrap{grid-template-columns:1fr;gap:3rem}
+  .why-img{max-width:480px}
+  .foot{grid-template-columns:1fr 1fr}
+  .rev-grid{grid-template-columns:1fr}
+}
+@media(max-width:820px){
+  .burger{display:block}
+  .nav ul{position:absolute;top:74px;left:0;right:0;background:var(--white);flex-direction:column;gap:0;border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .4s}
+  .nav ul.open{max-height:360px}
+  .nav ul li a{display:block;padding:1rem 4%}
+  .nav ul a::after{display:none}
+  .grid{grid-template-columns:repeat(2,1fr);gap:1.6rem 1rem}
+  .strip .container{grid-template-columns:1fr 1fr}
+  .col-grid{grid-template-columns:1fr 1fr;grid-template-rows:260px 260px 260px}
+  .col:first-child{grid-row:auto;grid-column:span 2}
+  .add{opacity:1;transform:none;padding:.65rem}
+  section{padding:4.2rem 0}
+  .cta{background-attachment:scroll}
+}
+@media(max-width:520px){
+  .cart-btn .lbl{display:none}
+  .foot{grid-template-columns:1fr}
+  .tools,.tools input,.tools select{width:100%}
+  .hero{min-height:80vh}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">Free styling advice on WhatsApp · New season pieces just landed</div>
+
+<header>
+  <div class="container nav">
+    <a href="#home" class="logo">ÉLARA<span>.</span></a>
+    <ul id="menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#collections">Collections</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="cart-btn" id="openCart" aria-label="Open cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 7h12l-1 13H7L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="lbl">Bag</span><span class="cart-count" id="count">0</span>
+      </button>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home" style="padding:0;background-image:url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1800&q=80')">
+  <div class="container">
+    <span class="eyebrow">ÉLARA Women's Fashion · Autumn Edit</span>
+    <h1>Dress with <em>grace.</em> Live with confidence.</h1>
+    <p>Timeless silhouettes, modern tailoring and soft, beautiful fabrics, designed to move from morning meetings to evening celebrations.</p>
+    <div class="hero-cta">
+      <a href="#shop" class="btn btn-light">Explore Collection</a>
+      <a href="#shop" class="link" style="color:#fff" data-filter="Bestseller">Shop Bestsellers</a>
+    </div>
+  </div>
+  <div class="scroll">Scroll</div>
+</section>
+
+<div class="strip">
+  <div class="container">
+    <div><b>✦</b> Premium Fabrics</div>
+    <div><b>✦</b> Modern Classic Cuts</div>
+    <div><b>✦</b> Easy WhatsApp Ordering</div>
+    <div><b>✦</b> Dedicated Styling Support</div>
+  </div>
+</div>
+
+<!-- SHOP -->
+<section id="shop">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The Collection</span>
+      <h2>Pieces Made to Be Worn, Loved & Remembered</h2>
+      <p>Browse dresses, tailoring, sets and essentials. Choose your size, add to your bag, and finish your order on WhatsApp.</p>
+    </div>
+
+    <div class="toolbar reveal">
+      <div class="filters" id="filters"></div>
+      <div class="tools">
+        <input type="search" id="search" placeholder="Search dresses, blazers…" aria-label="Search products">
+        <select id="sort" aria-label="Sort products">
+          <option value="featured">Featured</option>
+          <option value="low">Price: Low to High</option>
+          <option value="high">Price: High to Low</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty">
+      <p>No matching pieces found.</p>
+      <button class="btn btn-dark" id="resetAll">View All Products</button>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section class="collections" id="collections">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Featured Collections</span>
+      <h2>Shop by Occasion</h2>
+      <p>From polished workdays to weekend ease and unforgettable evenings.</p>
+    </div>
+    <div class="col-grid reveal">
+      <a href="#shop" class="col" data-filter="Dresses" style="background-image:url('https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1000&q=80')"><div><span>Evening & Day</span><h3>Dresses</h3></div></a>
+      <a href="#shop" class="col" data-filter="Tailoring" style="background-image:url('https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=80')"><div><span>Work & Beyond</span><h3>Tailoring</h3></div></a>
+      <a href="#shop" class="col" data-filter="Sets" style="background-image:url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80')"><div><span>Effortless</span><h3>Co-ord Sets</h3></div></a>
+      <a href="#shop" class="col" data-filter="Tops" style="background-image:url('https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=800&q=80')"><div><span>Everyday</span><h3>Tops & Skirts</h3></div></a>
+      <a href="#shop" class="col" data-filter="Outerwear" style="background-image:url('https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80')"><div><span>Layer Up</span><h3>Outerwear</h3></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section>
+  <div class="container why-wrap">
+    <div class="why-img reveal" style="background-image:url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1000&q=80')"></div>
+    <div class="reveal">
+      <span class="eyebrow">Why Choose Us</span>
+      <h2>Fashion That Feels as Good as It Looks</h2>
+      <div class="why-list">
+        <div class="why-item"><span class="n">01</span><div><h3>Premium Fabrics</h3><p>Soft, breathable and long-lasting materials chosen for comfort in every season.</p></div></div>
+        <div class="why-item"><span class="n">02</span><div><h3>Modern Classic Design</h3><p>Clean lines and flattering cuts that never go out of style, yet always feel fresh.</p></div></div>
+        <div class="why-item"><span class="n">03</span><div><h3>Easy WhatsApp Ordering</h3><p>No complicated checkout. Pick your pieces and confirm size and delivery in a simple chat.</p></div></div>
+        <div class="why-item"><span class="n">04</span><div><h3>Dedicated Support</h3><p>Need help choosing a size or an outfit? Our stylists are a message away.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="container reveal">
+    <div class="big">36+</div>
+    <p>Signature pieces</p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container about-wrap">
+    <div class="reveal">
+      <span class="eyebrow">About Us</span>
+      <h2>Designed for the Modern Woman</h2>
+      <p>ÉLARA began with a simple belief: every woman deserves clothing that makes her feel poised, comfortable and unmistakably herself. We blend classic elegance with a contemporary eye, creating wardrobe pieces you will reach for again and again.</p>
+      <p>Every item is selected for its fit, finish and fabric. No fast-fashion shortcuts, just thoughtful style, delivered with personal service.</p>
+      <div class="stats">
+        <div><b>6</b><span>Categories</span></div>
+        <div><b>100%</b><span>Focus on quality</span></div>
+        <div><b>1:1</b><span>WhatsApp support</span></div>
+      </div>
+      <a href="#shop" class="btn btn-dark">Browse the Collection</a>
+    </div>
+    <div class="about-img reveal" style="background-image:url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1000&q=80')"></div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Testimonials</span>
+      <h2>Loved by Our Customers</h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>“The fit is incredible. I wore the wrap dress to a wedding and got compliments all night.”</p><strong>Adaeze O.</strong><small>Dresses</small></div>
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>“Ordering on WhatsApp was so easy. They helped me pick my size and delivery was quick.”</p><strong>Chioma N.</strong><small>Co-ord Sets</small></div>
+      <div class="rev reveal"><div class="stars">★★★★★</div><p>“Sharp tailoring and a beautiful fabric. My new go-to blazer for the office.”</p><strong>Temi A.</strong><small>Tailoring</small></div>
+    </div>
+    <p class="note">Sample reviews. Replace with real customer feedback.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" style="background-image:url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1800&q=80')">
+  <div class="container reveal">
+    <span class="eyebrow" style="color:#e5c9a8">Your Wardrobe, Elevated</span>
+    <h2>Create a Look You'll Love Coming Back To</h2>
+    <div class="row">
+      <a href="#shop" class="btn btn-light">Explore the Collection</a>
+      <a href="#" class="btn btn-ghost" data-wa>Chat on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="news" id="contact">
+  <div class="container reveal">
+    <span class="eyebrow">Stay in Style</span>
+    <h2>Join the ÉLARA List</h2>
+    <p style="color:var(--muted)">New arrivals, private offers and styling notes, straight to your inbox.</p>
+    <form id="newsForm">
+      <input type="email" id="newsEmail" placeholder="Your email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <div class="msg" id="newsMsg"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div>
+        <a href="#home" class="logo">ÉLARA<span>.</span></a>
+        <p style="max-width:320px;font-size:.92rem">Modern classic women's fashion. Beautifully made, thoughtfully styled, easily ordered.</p>
+        <ul style="display:flex;gap:1.2rem;margin-top:1.2rem;font-size:.85rem">
+          <li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li><li><a href="#">TikTok</a></li>
+        </ul>
+      </div>
+      <div><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#shop">Shop</a></li><li><a href="#collections">Collections</a></li><li><a href="#about">About</a></li></ul></div>
+      <div><h4>Categories</h4><ul><li><a href="#shop" data-filter="Dresses">Dresses</a></li><li><a href="#shop" data-filter="Tailoring">Tailoring</a></li><li><a href="#shop" data-filter="Sets">Co-ord Sets</a></li><li><a href="#shop" data-filter="Outerwear">Outerwear</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="#" data-wa>WhatsApp Us</a></li><li>Enugu, Nigeria</li><li>Mon – Sat · 9am – 6pm</li></ul></div>
+    </div>
+    <div class="copy"><span>© <span id="yr"></span> ÉLARA. All rights reserved.</span><a href="#home">Back to top ↑</a></div>
+  </div>
+</footer>
+
+<!-- CART -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping bag">
+  <div class="d-head"><h3>Your Bag</h3><button class="close" id="closeCart" aria-label="Close">×</button></div>
+  <div class="d-body" id="cartBody"></div>
+  <div class="d-foot">
+    <div class="row2"><span>Subtotal</span><span id="sub">₦0</span></div>
+    <div class="row2 total"><span>Total</span><span id="total">₦0</span></div>
+    <small>No payment is taken online. Delivery is confirmed with you on WhatsApp.</small>
+    <button class="wa" id="checkout">Checkout via WhatsApp</button>
+    <button class="clear" id="clearCart">Clear bag</button>
+  </div>
+</aside>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ====== SETTINGS: change these ====== */
+const WHATSAPP_NUMBER = "2348000000000"; // your number, international format, no + or spaces
+const STORE_NAME = "ÉLARA";
+
+/* ====== PRODUCTS ====== */
+const U = (id,w=800)=>`https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+const PRODUCTS = [
+ {id:1,name:"Satin Slip Midi Dress",cat:"Dresses",price:42000,old:52000,tag:"Bestseller",img:U("photo-1572804013309-59a88b7e92f1")},
+ {id:2,name:"Ivory Wrap Dress",cat:"Dresses",price:38500,tag:"New",img:U("photo-1496747611176-843222e1e57c")},
+ {id:3,name:"Noir Tailored Blazer",cat:"Tailoring",price:56000,tag:"Bestseller",img:U("photo-1591047139829-d91aecb6caea")},
+ {id:4,name:"Wide-Leg Trousers",cat:"Tailoring",price:29500,img:U("photo-1509631179647-0177331693ae")},
+ {id:5,name:"Linen Co-ord Set",cat:"Sets",price:47000,tag:"New",img:U("photo-1539109136881-3be0616acf4b")},
+ {id:6,name:"Pleated Skirt Set",cat:"Sets",price:44500,img:U("photo-1515886657613-9f3515b0c78f")},
+ {id:7,name:"Silk Blend Blouse",cat:"Tops",price:24000,old:30000,img:U("photo-1434389677669-e08b4cac3105")},
+ {id:8,name:"Camel Trench Coat",cat:"Outerwear",price:78000,tag:"Bestseller",img:U("photo-1551028719-00167b16eac5")},
+ {id:9,name:"Evening Column Gown",cat:"Dresses",price:68000,tag:"New",img:U("photo-1469334031218-e382a71b716b")},
+ {id:10,name:"Ribbed Knit Top",cat:"Tops",price:16500,img:U("photo-1445205170230-053b83016050")},
+ {id:11,name:"Cropped Tweed Jacket",cat:"Outerwear",price:61000,img:U("photo-1490481651871-ab68de25d43d")},
+ {id:12,name:"Floral Summer Dress",cat:"Dresses",price:34000,old:41000,img:U("photo-1483985988355-763728e1935b")}
+];
+const SIZES=["S","M","L","XL"];
+const naira = n => "₦"+Number(n).toLocaleString("en-NG");
+
+/* ====== STATE ====== */
+let cart = [];
+try{ cart = JSON.parse(localStorage.getItem("elara_cart")||"[]"); }catch(e){ cart=[]; }
+const save = ()=>{ try{ localStorage.setItem("elara_cart",JSON.stringify(cart)); }catch(e){} };
+let state = {cat:"All",q:"",sort:"featured"};
+const sizeChoice = {};
+
+const $ = s=>document.querySelector(s);
+
+/* ====== SHOP RENDER ====== */
+const cats = ["All","Bestseller",...new Set(PRODUCTS.map(p=>p.cat))];
+function renderFilters(){
+  $("#filters").innerHTML = cats.map(c=>`<button class="chip ${state.cat===c?"active":""}" data-cat="${c}">${c}</button>`).join("");
+}
+function renderGrid(){
+  let list = PRODUCTS.filter(p=>{
+    const catOk = state.cat==="All" || (state.cat==="Bestseller" ? p.tag==="Bestseller" : p.cat===state.cat);
+    const q = state.q.trim().toLowerCase();
+    return catOk && (!q || (p.name+" "+p.cat).toLowerCase().includes(q));
+  });
+  if(state.sort==="low") list.sort((a,b)=>a.price-b.price);
+  if(state.sort==="high") list.sort((a,b)=>b.price-a.price);
+  $("#grid").innerHTML = list.map(p=>`
+    <article class="card reveal">
+      <div class="img">
+        ${p.tag?`<span class="tag">${p.tag}</span>`:""}
+        <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.display='none'">
+        <button class="add" data-add="${p.id}">Add to Bag</button>
+      </div>
+      <span class="cat" style="display:block;margin-top:.9rem">${p.cat}</span>
+      <h3 style="margin-top:.1rem">${p.name}</h3>
+      <div class="price">${naira(p.price)}${p.old?`<s>${naira(p.old)}</s>`:""}</div>
+      <div class="size-row" data-sizes="${p.id}">
+        ${SIZES.map(s=>`<button data-size="${s}" class="${(sizeChoice[p.id]||"M")===s?"on":""}">${s}</button>`).join("")}
+      </div>
+    </article>`).join("");
+  $("#empty").style.display = list.length?"none":"block";
+  $("#grid").style.display = list.length?"grid":"none";
+  observe();
+}
+function setCat(c){ state.cat=c; renderFilters(); renderGrid(); }
+
+$("#filters").addEventListener("click",e=>{ const b=e.target.closest("[data-cat]"); if(b) setCat(b.dataset.cat); });
+$("#search").addEventListener("input",e=>{ state.q=e.target.value; renderGrid(); });
+$("#sort").addEventListener("change",e=>{ state.sort=e.target.value; renderGrid(); });
+$("#resetAll").addEventListener("click",()=>{ state={cat:"All",q:"",sort:"featured"}; $("#search").value=""; $("#sort").value="featured"; renderFilters(); renderGrid(); });
+document.querySelectorAll("[data-filter]").forEach(a=>a.addEventListener("click",()=>setCat(a.dataset.filter)));
+
+$("#grid").addEventListener("click",e=>{
+  const sz=e.target.closest("[data-size]");
+  if(sz){
+    const id=sz.parentElement.dataset.sizes; sizeChoice[id]=sz.dataset.size;
+    sz.parentElement.querySelectorAll("button").forEach(b=>b.classList.toggle("on",b===sz)); return;
+  }
+  const add=e.target.closest("[data-add]");
+  if(add) addToCart(+add.dataset.add);
+});
+
+/* ====== CART ====== */
+function addToCart(id){
+  const size = sizeChoice[id]||"M";
+  const found = cart.find(i=>i.id===id && i.size===size);
+  if(found) found.qty++; else cart.push({id,size,qty:1});
+  save(); renderCart(); toast("Added to your bag");
+}
+function renderCart(){
+  const body=$("#cartBody");
+  let count=0,total=0;
+  if(!cart.length){
+    body.innerHTML=`<div class="d-empty">Your bag is empty.<br>Add something beautiful.</div>`;
+  } else {
+    body.innerHTML=cart.map((it,idx)=>{
+      const p=PRODUCTS.find(x=>x.id===it.id); if(!p) return "";
+      count+=it.qty; total+=p.price*it.qty;
+      return `<div class="item">
+        <img src="${p.img}" alt="${p.name}" onerror="this.style.visibility='hidden'">
+        <div><h4>${p.name}</h4><small>Size ${it.size} · ${naira(p.price)}</small>
+          <div class="qty"><button data-dec="${idx}">−</button><span>${it.qty}</span><button data-inc="${idx}">+</button></div></div>
+        <button class="rm" data-rm="${idx}">Remove</button></div>`;
+    }).join("");
+  }
+  $("#count").textContent=count; $("#sub").textContent=naira(total); $("#total").textContent=naira(total);
+}
+$("#cartBody").addEventListener("click",e=>{
+  const t=e.target;
+  if(t.dataset.inc!==undefined) cart[t.dataset.inc].qty++;
+  else if(t.dataset.dec!==undefined){ const i=+t.dataset.dec; cart[i].qty--; if(cart[i].qty<1) cart.splice(i,1); }
+  else if(t.dataset.rm!==undefined) cart.splice(+t.dataset.rm,1);
+  else return;
+  save(); renderCart();
+});
+$("#clearCart").addEventListener("click",()=>{ cart=[]; save(); renderCart(); });
+$("#checkout").addEventListener("click",()=>{
+  if(!cart.length){ toast("Your bag is empty"); return; }
+  let total=0;
+  const lines=cart.map(it=>{ const p=PRODUCTS.find(x=>x.id===it.id); const sub=p.price*it.qty; total+=sub;
+    return `• ${p.name} (Size ${it.size}) x${it.qty} - ${naira(sub)}`; });
+  const msg=`Hello ${STORE_NAME}, I'd like to order:\n\n${lines.join("\n")}\n\nTotal: ${naira(total)}\n\nPlease confirm availability and delivery.`;
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`,"_blank");
+});
+document.querySelectorAll("[data-wa]").forEach(a=>a.addEventListener("click",e=>{
+  e.preventDefault();
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello "+STORE_NAME+", I'd love some styling help.")}`,"_blank");
+}));
+
+/* Drawer */
+const drawer=$("#drawer"), overlay=$("#overlay");
+const openCart=()=>{ drawer.classList.add("open"); overlay.classList.add("show"); };
+const closeCart=()=>{ drawer.classList.remove("open"); overlay.classList.remove("show"); };
+$("#openCart").addEventListener("click",openCart);
+$("#closeCart").addEventListener("click",closeCart);
+overlay.addEventListener("click",closeCart);
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeCart(); });
+
+/* Toast */
+let tt; function toast(m){ const t=$("#toast"); t.textContent=m; t.classList.add("show"); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove("show"),1800); }
+
+/* Mobile menu */
+$("#burger").addEventListener("click",e=>{ e.currentTarget.classList.toggle("open"); $("#menu").classList.toggle("open"); });
+$("#menu").addEventListener("click",e=>{ if(e.target.tagName==="A"){ $("#burger").classList.remove("open"); $("#menu").classList.remove("open"); }});
+
+/* Newsletter */
+$("#newsForm").addEventListener("submit",e=>{
+  e.preventDefault(); $("#newsMsg").textContent="Thank you! You're on the list."; $("#newsEmail").value="";
+});
+
+/* Reveal on scroll */
+const io = "IntersectionObserver" in window ? new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target);} }),{threshold:.12}) : null;
+function observe(){ document.querySelectorAll(".reveal:not(.in)").forEach(el=> io? io.observe(el) : el.classList.add("in")); }
+
+/* Init */
+$("#yr").textContent=new Date().getFullYear();
+renderFilters(); renderGrid(); renderCart(); observe();
+</script>
+</body>
+</html>
